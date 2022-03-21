@@ -1,0 +1,136 @@
+I. Giới thiệu môn học: database and sql for data science
+II. Tổng quan về database
+    1. Data là gì ? Data rất quan trọng nên phải cần bảo mật và nó cần được lưu trữ và truy cập nhanh chóng
+    2. Database là gì ? Lưu trữ, thêm, sửa đổi và truy vấn dữ liệu; Phục vụ cho các yêu cầu khác nhau
+    3. Relational Database là gì ? 
+        - Lưu trữ và sắp sếp theo các bảng tính, bao gồm cột và dòng
+        - Các cột chứa các thuộc tính về dữ liệu
+        - Bảng là tập hợp các dòng dữ liệu có liên quan như danh sách nhân viên hoặc danh sách tác giả
+        - Mối quan hệ giữa các bảng
+    4. DBMS (Database Management System)
+        - Hệ thống quản lý cơ sở dữ liệu
+        - Thiết kế để quản trị một cơ sở dữ liệu
+        - Hỗ trợ khả năng lưu trữ, thêm mới, sửa chữa, xóa và tìm kiếm thông tin trong một cơ sở dữ liệu
+    5. RDBMS(Relational Database Management System)
+        - Hệ thống quản lý cơ sở dữ liệu quan hệ kiểm soát việc truy cập, tổ chức và lưu trữ dữ liệu quan hệ
+    6. SQL là gì ?
+        - Structured Query Language: ngôn ngữ truy vấn mang tính cấu trúc
+        - Ngôn ngữ máy tính phổ biến để tạo, sửa và lấy dữ liệu từ một hệ quản trị cơ sở dữ liệu quan hệ 
+        - Có 2 loại: DDL-Data Definition Language và DML: Data Manipulation Language
+    7. Phân biệt DDL và DML
+        7.1. DDL (Data Definition Language): 
+            - Ngôn ngữ Định nghĩa Dữ liệu: dùng để định nghĩa cấu trúc của cơ sở dữ liệu, bao gồm định nghĩa các hàng, 
+            các cột, các bảng dữ liệu, các chỉ số và một số thuộc tính khác liên quan đến cơ sở dữ liệu
+            - DDL bao gồm các lệnh tạo, thay đổi các bảng dữ liệu: CREATE/ ALTER/ DROP/ RENAME
+        7.2. DML (Data Manipulation Language): 
+            - Ngôn ngữ Thao tác Dữ liệu: cho phép thực thi các câu truy vấn để sửa đổi, chèn thêm và xoá các dòng dữ liệu (mẩu tin) trong các bảng
+            - DML: bao gồm các lệnh làm thay đổi dữ liệu: INSERT, UPDATE, DELETE
+III. Basic SQL
+    1. 4 Nhóm lệnh cơ bản
+        - SQL-Structured query Language: CREATE/DROP TABLE
+        - DML-Data Manipulation Language: SELECT/ COUNT/ DISTINCT/ LIMIT/ WHERE AND/OR
+        - DDL-Data Definition Language: INSERT/ UPDATE/ DELETE
+        - DCL-Data Control Language
+    2. Các lệnh dữ liệu
+        - LIMIT: Dùng giới hạn số dòng dữ liệu trong câu lệnh truy vấn
+        - COUNT: Liệt kê đêm số dữ liệu
+        - DISTINCT: Xóa những dòng trùng
+        - INSERT: Dùng để thêm mẩu tin (dòng dữ liệu) mới vào bảng dữ liệu
+        - UPDATE: Dùng cập nhật (sửa) mẩu tin (dòng dữ liệu) trong bảng dữ liệu
+        - DELETE: Dùng để xóa mẩu tin (dòng dữ liệu) trong bảng dữ liệu
+        - CONSTRAINT: là qui tắc được áp đặt cho các cột dữ liệu trên TABLE
+            + NOT NULL: Bảo đảm một cột không thể có giá trị NULL
+            + DEFAULT: Cung cấp một giá trị mặc định cho cột khi không được xác định 
+            + UNIQUE: Bảo đảm tất cả giá trị trong một cột là khác nhau
+            + PRIMARY KEY: Xác định giá trị trên tập các cột khóa chính phải là duy nhất, không được trùng lặp. Khai báo khóa chính phải có NOT NULL
+            + FOREIGN KEY: Dùng để thiết lập khóa ngoại trên bảng, tham chiếu đến bảng các thông qua giá trị của cột được liên kết
+            + CHECK: Bảo đảm tất cả giá trị trong cột thỏa mãn điều kiện nào đó
+            + Dùng để giới hạn số lượng mẫu tin: AND/ OR
+IV. Advanced SQL
+    1. String Patterns: một chuỗi các ký tự đại diện dùng tìm kiếm trong cột hoặc biểu thức
+        - %: Đại diện cho không có ký tự hoặc nhiều ký tự 
+        - _: Đại diện cho 1 ký tự 
+        - Note: Ký tự đại diện (pattern) trong điều kiện so sánh phải sử dụng toán tử LIKE hoặc NOT LIKE
+        - Các phép toán so sánh khi sử dụng range:
+            + BETWEEN Min AND Max: Giá trị nằm trong khoảng từ Min đến Max 
+            + IN: Giá trị nằm trong danh sách được chọn
+            + NOT IN: Giá trị không nằm trong danh sách được chọn
+    2. ORDER BY
+        - Sắp xếp dữ liệu sau khi thực hiện truy vấn
+        - Asc (Mặc định)|Desc (Giảm dần)
+    3. GROUP BY, HAVING
+        3.1. GROUP BY
+            - Group by: Dùng để gom nhóm dữ liệu sau khi thực hiện tính toán trong mệnh để SELECT
+            - Mệnh đề Group by phải nắm sau mệnh đề Where và trước Order by
+            - Các cột không được tính toán thống kê trong mệnh đề SELECT phải được Group by 
+        3.2. HAVING
+            - Dùng để lọc dữ liệu của Nhóm
+            - Lưu ý mệnh đề Having phải nằm sau mệnh đề Group by và trước Order by 
+    4. Built-in Function, Date, Timestamps
+        4.1. Các hàm tính toán tổng hợp
+            - COUNT: Đếm tổng số lượng các dòng (mẩu tin)
+            - SUM: Tính tổng các giá trị
+            - MIN: Tìm giá trị nhỏ nhất
+            - NAX: Tìm giá trị lớn nhất
+            - AVG: Tìm giá trị trung bình
+            - STDDEV: Tính standard deviation của biển thức
+        4.2. Các hàm xử lý chuỗi và làm tròn số
+            - ROUND: Làm tròn số đến vị trí được chỉ định, mặc định làm tròn đến dấu chấm thập phân 
+            - Lenghth: Số ký tự có trong chuỗi
+            - UCASE: Đổi thành chuỗi chữ hoa
+            - LCASE: Đổi thành chuỗi chữ thường
+            - SUBSTR: Trả về chuổi con có trong chuỗi ban đầu
+        4.3. Built-in Function, Date, Timestamps
+            - Các hàm xử lý ngày: DAY, MONTH, YEAR, DAYOFMONTH, DAYOFWEEK, DAYOFYEAR, WEEK
+            - Các hàm xử lý giờ: HOUR, MINUTE, SECOND
+            - Ngày giờ hiện tại: CURRENT_DATE, CURRENT_TIME, CURRENT_TIMESTAMP
+            - Ngày giờ hiện tại (DB2): CURRENT_DATE, CURRENT_TIME, CURRENT TIMESTAMP
+    5. Sub-Query, Nested-Select 
+        5.1. Sub-Query (Truy vấn con)
+            - Toán tử: =, >, >=, <, <=, != khi truy vấn con trả về một giá trị
+            - Sử dụng phép toán so sánh:: IN, NOT IN, >= ALL, và <= ANY khi truy vấn con trả về một cột giá trị       
+        5.2. Query in Multiple table 
+            - Sử dụng truy vấn con (truy vấn select lồng nhau) để truy xuất dữ liệu trên nhiều bảng khác nhau
+            - Sử dụng phép toán kết - JOIN
+                + Inner join: chọn các dòng dữ liệu khớp trong cả 2 Bảng
+                + Left (outer) join: chọn các dòng dữ liệu từ bảng đầu tiên (ngoài cùng bên trái) với các dữ liệu phù hợp của bảng bên phải
+                + Right (outer) join: chọn các dòng dữ liệu từ bảng thứ 2 (ngoài cùng bên phải) với các dữ liệu phù hợp của bảng bên trái
+                + Full (outer) join: chọn tất cả các dòng dữ liệu khớp với các dòng của bảng bên phải và bảng bên trái
+        5.3. UNION
+            - Dùng để kết hợp các bộ kết quả của hai truy vấn Select với nhau
+            - Các kiểu dữ liệu của các cột kết quả trong 2 truy vấn phải khớp với nhau
+            - UNION kết hợp theo vị trí cột thay cho tên cột
+V. Truy vấn database với python
+    1. Python và Database
+        - Ưu điểm: 
+            + Cực mạnh trong việc xử lý các loại dữ liệu chuỗi, tập hợp => Thích hợp với ứng dụng bóc tách, chuyển đổi phân tích dữ liệu: big data - data mining
+            + Cung cấp nhiều thư viện: Numpy, Pandas, Matplotlib, SciPy...
+            + Dễ code, dễ cài đặt
+            + Có thể chạy trên nhiều nền tảng hệ điều hành khác nhau
+            + Hỗ trợ tất cả các loại cơ sở dữ liệu quan Hệ
+            + Tài liệu hướng dẫn chi tiết, đội ngũ developer đông đảo
+        - Mô hình truy vấn DB:
+            + Python truy cập DB thông qua việc gọi API tương ứng với từng DB
+            + API: là 1 tập hợp các hàm được cung cấp để có thể gọi để có quyền truy vấn vào hệ thống
+        - SQL APIs
+            + API cung cấp để truy vấn vào DBMS
+            + Câu lệnh SQL cho DBMS => Chương trình ứng dụng hàm trong API và nó gọi các hàm khác để lấy kết quả truy vấn và thông tin trạng thái từ DBMS
+    2. Sử dụng DB-API
+        - Thư viện chuẩn của Python dùng để truy cập cơ sở dữ liệu quan hệ 
+        - Cho phép Python kết nối đến bất kỳ loại cơ sở dữ liệu quan hệ nào
+        - Các phương thức của Connection:
+            + cursor(): trả về 1 đối tượng cursor (sử dụng cursor để thực hiện lệnh)
+            + commit(): dimhf để cập nhật các thay đổi về Database
+            + rollback(): hủy bỏ các thay đổi, không cập nhật về Database 
+            + close(): n
+    3. Sử dụng Python code thao tác dữ liệu
+    4. Sử dụng Magic SQL (%)
+VI. Phân tích dữ liệu với Python 
+    
+
+
+                    
+
+
+
+    
